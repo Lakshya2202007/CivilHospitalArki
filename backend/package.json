@@ -4,8 +4,8 @@
   "description": "Civil Hospital Arki API — modular monolith",
   "main": "src/server.js",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js",
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
     "seed:admin": "node src/scripts/seedAdmin.js"
   },
   "keywords": [],
