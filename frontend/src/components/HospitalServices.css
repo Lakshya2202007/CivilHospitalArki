@@ -1,0 +1,236 @@
+.hospital-services-section {
+  padding: 4rem 0;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.hs-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.hs-title {
+  font-size: 2.2rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.hs-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Highlights Grid */
+.hs-highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.hs-highlight-card {
+  display: flex;
+  align-items: flex-start;
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  padding: 1.5rem;
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hs-highlight-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.hs-highlight-icon-wrap {
+  flex-shrink: 0;
+  background-color: var(--primary-color);
+  color: var(--white);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+
+.hs-highlight-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 0.25rem;
+}
+
+.hs-highlight-desc {
+  font-size: 0.9rem;
+  color: var(--text-dark);
+}
+
+/* Tabs */
+.hs-main-container {
+  background-color: var(--bg-light);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-color);
+}
+
+.hs-tabs-nav {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--white);
+  overflow-x: auto;
+}
+
+.hs-tab-btn {
+  flex: 1;
+  padding: 1.25rem 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-light);
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.hs-tab-btn:hover {
+  color: var(--primary-color);
+  background-color: #f9fafb;
+}
+
+.hs-tab-btn.active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+  background-color: #f0fdf4;
+}
+
+/* Tab Content */
+.hs-tab-content {
+  padding: 2.5rem;
+}
+
+.hs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.hs-card {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  z-index: 1;
+}
+
+.hs-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border-color: var(--secondary-color);
+}
+
+/* Watermark Background Icon */
+.hs-card-watermark {
+  position: absolute;
+  right: -20px;
+  bottom: -20px;
+  opacity: 0;
+  color: var(--primary-color);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+  transform: scale(0.5) rotate(-15deg);
+  pointer-events: none;
+}
+
+.hs-card-watermark svg {
+  width: 140px;
+  height: 140px;
+  opacity: 0.12; /* Darker watermark */
+  stroke-width: 2.5px; /* Bolder watermark icon */
+}
+
+.facility-watermark {
+  color: #dc2626;
+}
+
+.support-watermark {
+  color: #d97706;
+}
+
+.hs-card:hover .hs-card-watermark {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.hs-card-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background-color: #e0e7ff;
+  color: #4f46e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1.25rem;
+}
+
+.facility-icon {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.support-icon {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.hs-card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-dark);
+}
+
+.hs-card-desc {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  line-height: 1.4;
+}
+
+/* Animation */
+.fade-in {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hs-title {
+    font-size: 1.8rem;
+  }
+  
+  .hs-tab-btn {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+  
+  .hs-tab-content {
+    padding: 1.5rem;
+  }
+}

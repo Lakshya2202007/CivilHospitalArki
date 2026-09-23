@@ -1,0 +1,59 @@
+:root {
+  --primary-color: #0d4b2e; /* Dark green for header */
+  --secondary-color: #196f42; /* Lighter green for buttons/active states */
+  --text-dark: #1f2937;
+  --text-light: #6b7280;
+  --bg-light: #f3f4f6;
+  --white: #ffffff;
+  --border-color: #e5e7eb;
+  
+  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--text-dark);
+  background-color: var(--white);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Helper utility for layout */
+.flex {
+  display: flex;
+}
+.items-center {
+  align-items: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+.w-full {
+  width: 100%;
+}
