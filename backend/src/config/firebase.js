@@ -14,12 +14,12 @@ function buildCredential() {
   // Hosted environments such as Vercel:
   // use Firebase credentials from environment variables.
   if (projectId && clientEmail && privateKey) {
-    return cert({
-      projectId,
-      clientEmail,
-      privateKey: privateKey.replace(/\\n/g, '\n'),
-    });
-  }
+  return cert({
+    projectId,
+    clientEmail,
+    privateKey: privateKey.replace(/\\n/g, '\n'),
+  });
+}
 
   // Local development:
   // use the service-account JSON file.
