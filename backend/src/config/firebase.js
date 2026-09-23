@@ -11,6 +11,18 @@ let db = null;
 function buildCredential() {
   const { serviceAccountPath, projectId, clientEmail, privateKey } = env.firebase;
 
+  // Hosted environments such as Vercel:
+  // use Firebase credentials from environment variables.
+  if (projectId && clientEmail && privateKey) {
+    return cert({
+      projectId,
+      clientEmail,
+      privateKey: privateKey.replace(/\\n/g, '\n'),
+    });
+  }
+
+  // Local development:
+  // use the service-account JSON file.
   if (serviceAccountPath) {
     const resolved = path.isAbsolute(serviceAccountPath)
       ? serviceAccountPath
@@ -19,39 +31,34 @@ function buildCredential() {
     if (!fs.existsSync(resolved)) {
       throw new Error(
         `Service account file not found at ${resolved}. ` +
-          'Check FIREBASE_SERVICE_ACCOUNT_PATH in backend/.env'
+        'Check FIREBASE_SERVICE_ACCOUNT_PATH in backend/.env'
       );
     }
 
     let serviceAccount;
+
     try {
       serviceAccount = JSON.parse(fs.readFileSync(resolved, 'utf8'));
     } catch (err) {
-      throw new Error(`Service account file at ${resolved} is not valid JSON: ${err.message}`);
+      throw new Error(
+        `Service account file at ${resolved} is not valid JSON: ${err.message}`
+      );
     }
 
     if (!serviceAccount.project_id || !serviceAccount.private_key) {
       throw new Error(
         `${resolved} does not look like a Firebase service-account key ` +
-          '(missing project_id or private_key).'
+        '(missing project_id or private_key).'
       );
     }
 
     return cert(serviceAccount);
   }
 
-  if (projectId && clientEmail && privateKey) {
-    return cert({
-      projectId,
-      clientEmail,
-      // .env files store the key with literal \n sequences.
-      privateKey: privateKey.replace(/\\n/g, '\n'),
-    });
-  }
-
   throw new Error(
-    'Firebase credentials missing. Set FIREBASE_SERVICE_ACCOUNT_PATH, or ' +
-      'FIREBASE_PROJECT_ID + FIREBASE_CLIENT_EMAIL + FIREBASE_PRIVATE_KEY in backend/.env'
+    'Firebase credentials missing. Set FIREBASE_PROJECT_ID + ' +
+    'FIREBASE_CLIENT_EMAIL + FIREBASE_PRIVATE_KEY, or ' +
+    'FIREBASE_SERVICE_ACCOUNT_PATH for local development.'
   );
 }
 
